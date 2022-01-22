@@ -36,15 +36,14 @@ export class CustomGridComponent implements OnInit {
    * Returns the FormGroup as a Table Row
    */
   private createRow(): FormGroup {
-    return this.fb.group({
-      name: new FormControl(null, {
-        validators: [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(50),
-        ],
-      }),
+    const fg = this.fb.group({});
+    this.headers.forEach((header) => {
+      fg.addControl(
+        header.controlName,
+        this.fb.control(header.defaultValue || null)
+      );
     });
+    return fg;
   }
 
   get rows(): FormArray {
