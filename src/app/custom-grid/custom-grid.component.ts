@@ -13,7 +13,9 @@ import {
   styleUrls: ['./custom-grid.component.scss'],
 })
 export class CustomGridComponent implements OnInit {
-  fg: FormGroup;
+  @Input() fg: FormGroup;
+  @Input() formArrayName = 'rows';
+  @Input() dataKey = 'id';
   @Input() headers: any[] = [];
   @Input() data: any[] = [];
   constructor(private fb: FormBuilder) {
@@ -27,9 +29,7 @@ export class CustomGridComponent implements OnInit {
    * Initializes the Form & by default adds an empty row to the PRIMENG TABLE
    */
   private createForm(): void {
-    this.fg = this.fb.group({
-      rows: this.fb.array([this.createRow()]),
-    });
+    this.fg.addControl(this.formArrayName, this.fb.array([]));
   }
 
   /**
@@ -37,7 +37,7 @@ export class CustomGridComponent implements OnInit {
    */
   private createRow(): FormGroup {
     return this.fb.group({
-      name: new FormControl('awdawd', {
+      name: new FormControl(null, {
         validators: [
           Validators.required,
           Validators.minLength(3),

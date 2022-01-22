@@ -1,7 +1,7 @@
 <div class="card">
   <h5>Cell Editing</h5>
   <form [formGroup]="fg">
-    <p-table [value]="rows.controls" dataKey="id">
+    <p-table [value]="rows.controls" [dataKey]="dataKey">
       <ng-template pTemplate="header">
         <tr>
           <th
@@ -16,7 +16,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-        <ng-container formArrayName="rows">
+        <ng-container [formArrayName]="formArrayName">
           <tr [formGroupName]="rowIndex">
             <ng-container *ngFor="let header of headers">
               <ng-container [ngSwitch]="header.controlType">
