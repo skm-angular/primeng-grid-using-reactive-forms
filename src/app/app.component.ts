@@ -9,7 +9,7 @@ import { ProductsService } from './services/products.service';
 })
 export class AppComponent {
   products: Product[] = [];
-  gridHeaders = ['name', 'Name', 'Category', 'Country'];
+  gridHeaders = ['name'];
   title = 'primeng-grid-using-reactive-forms';
 
   constructor(private productService: ProductsService) {}

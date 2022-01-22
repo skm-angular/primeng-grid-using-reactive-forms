@@ -27,6 +27,17 @@
                   </p-cellEditor>
                 </td>
                 <td *ngSwitchDefault>{{ rowData.get(column).value }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    title="Delete"
+                    (click)="onDeleteRow(rowIndex)"
+                  >
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    Delete
+                  </button>
+                </td>
               </ng-container>
             </ng-container>
           </tr>
@@ -34,4 +45,21 @@
       </ng-template>
     </p-table>
   </form>
+  <div class="card-footer">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm pull-left"
+      (click)="addNewRow()"
+    >
+      Add Row
+    </button>
+    <button
+      type="button"
+      class="btn btn-success btn-sm pull-right"
+      title="Save"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </div>
 </div>

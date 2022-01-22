@@ -28,14 +28,14 @@ export class CustomGridComponent implements OnInit {
    */
   private createForm(): void {
     this.fg = this.fb.group({
-      rows: this.fb.array([this.createTableRow()]),
+      rows: this.fb.array([this.createRow()]),
     });
   }
 
   /**
    * Returns the FormGroup as a Table Row
    */
-  private createTableRow(): FormGroup {
+  private createRow(): FormGroup {
     return this.fb.group({
       name: new FormControl('awdawd', {
         validators: [
@@ -49,5 +49,17 @@ export class CustomGridComponent implements OnInit {
 
   get rows(): FormArray {
     return this.fg.get('rows') as FormArray;
+  }
+
+  addNewRow(): void {
+    this.rows.push(this.createRow());
+  }
+
+  onDeleteRow(rowIndex: number): void {
+    this.rows.removeAt(rowIndex);
+  }
+
+  save() {
+    console.log(this.fg);
   }
 }
