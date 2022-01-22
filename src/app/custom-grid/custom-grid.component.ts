@@ -47,7 +47,7 @@ export class CustomGridComponent implements OnInit {
   }
 
   get rows(): FormArray {
-    return this.fg.get('rows') as FormArray;
+    return this.fg.get(this.formArrayName) as FormArray;
   }
 
   addNewRow(): void {
