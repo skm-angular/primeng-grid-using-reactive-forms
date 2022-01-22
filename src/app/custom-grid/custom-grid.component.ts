@@ -40,7 +40,7 @@ export class CustomGridComponent implements OnInit {
     this.headers.forEach((header) => {
       fg.addControl(
         header.controlName,
-        this.fb.control(header.defaultValue || null)
+        this.fb.control(header.defaultValue || null, [Validators.required])
       );
     });
     return fg;

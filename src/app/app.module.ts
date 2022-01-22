@@ -8,8 +8,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { CustomGridComponent } from './custom-grid/custom-grid.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { ControlErrorsComponent } from './control-errors/control-errors.component';
 @NgModule({
-  declarations: [AppComponent, CustomGridComponent],
+  declarations: [AppComponent, CustomGridComponent, ControlErrorsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -16,6 +16,10 @@ export class AppComponent {
       tooltipPosition: 'bottom',
       header: 'Name',
       controlType: 'textEdit',
+      errorMessages: {
+        required: 'User name must be given.',
+        pattern: 'User name contains invalid characters.',
+      },
     },
   ];
   title = 'primeng-grid-using-reactive-forms';

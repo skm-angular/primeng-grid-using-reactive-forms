@@ -33,6 +33,28 @@
                       {{ rowData.get(header.controlName).value }}
                     </ng-template>
                   </p-cellEditor>
+                  <app-control-errors
+                    [controlName]="header.controlName"
+                    id="username-errors"
+                  >
+                    <ng-template let-errors>
+                      <ng-container *ngIf="errors.required">
+                        {{ header.errorMessages.required }}
+                      </ng-container>
+                      <ng-container *ngIf="errors.pattern">
+                        {{ header.errorMessages.pattern }}
+                      </ng-container>
+                      <ng-container *ngIf="errors.maxlength">
+                        {{ header.errorMessages.maxlength }}
+                      </ng-container>
+                      <ng-container *ngIf="errors.minlength">
+                        {{ header.errorMessages.minlength }}
+                      </ng-container>
+                      <ng-container *ngIf="errors.taken">
+                        User name is already taken. Please choose another one.
+                      </ng-container>
+                    </ng-template>
+                  </app-control-errors>
                 </td>
                 <td *ngSwitchDefault>
                   {{ rowData.get(header.controlName).value }}
