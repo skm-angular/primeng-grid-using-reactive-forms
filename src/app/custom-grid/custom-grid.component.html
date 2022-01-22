@@ -1,0 +1,10 @@
+<div class="card">
+  <h5>Cell Editing</h5>
+  <p-table [value]="data" dataKey="id">
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let gridHeader of gridHeaders">{{ gridHeader }}</th>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

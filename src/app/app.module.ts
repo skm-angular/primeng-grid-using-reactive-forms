@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
+import { CustomGridComponent } from './custom-grid/custom-grid.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CustomGridComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
