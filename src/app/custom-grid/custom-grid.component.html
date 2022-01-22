@@ -20,7 +20,12 @@
           <tr [formGroupName]="rowIndex">
             <ng-container *ngFor="let header of headers">
               <ng-container [ngSwitch]="header.controlType">
-                <td pEditableColumn *ngSwitchCase="'textEdit'">
+                <td
+                  pEditableColumn
+                  *ngSwitchCase="'textEdit'"
+                  [pTooltip]="rowData.get(header.controlName).value"
+                  tooltipPosition="bottom"
+                >
                   <p-cellEditor>
                     <ng-template pTemplate="input">
                       <input
