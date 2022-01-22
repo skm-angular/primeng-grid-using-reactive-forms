@@ -10,16 +10,18 @@
       <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
         <ng-container formArrayName="rows">
           <tr [formGroupName]="rowIndex">
-            <td pEditableColumn>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input pInputText type="text" formControlName="name" />
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{ rowData.get("name").value }}
-                </ng-template>
-              </p-cellEditor>
-            </td>
+            <ng-container *ngFor="let column of gridHeaders">
+              <td pEditableColumn>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input pInputText type="text" [formControlName]="column" />
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{ rowData.get(column).value }}
+                  </ng-template>
+                </p-cellEditor>
+              </td>
+            </ng-container>
           </tr>
         </ng-container>
       </ng-template>
