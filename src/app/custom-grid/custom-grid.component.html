@@ -4,29 +4,39 @@
     <p-table [value]="rows.controls" dataKey="id">
       <ng-template pTemplate="header">
         <tr>
-          <th *ngFor="let gridHeader of gridHeaders">{{ gridHeader }}</th>
+          <th
+            *ngFor="let header of headers"
+            [pTooltip]="header.pTooltip ? header.pTooltip : header.header"
+            [tooltipPosition]="
+              header.tooltipPosition ? header.tooltipPosition : 'bottom'
+            "
+          >
+            {{ header.header }}
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
         <ng-container formArrayName="rows">
           <tr [formGroupName]="rowIndex">
-            <ng-container *ngFor="let column of gridHeaders">
-              <ng-container [ngSwitch]="column">
-                <td pEditableColumn *ngSwitchCase="'name'">
+            <ng-container *ngFor="let header of headers">
+              <ng-container [ngSwitch]="header.controlType">
+                <td pEditableColumn *ngSwitchCase="'textEdit'">
                   <p-cellEditor>
                     <ng-template pTemplate="input">
                       <input
                         pInputText
                         type="text"
-                        [formControlName]="column"
+                        [formControlName]="header.controlName"
                       />
                     </ng-template>
                     <ng-template pTemplate="output">
-                      {{ rowData.get(column).value }}
+                      {{ rowData.get(header.controlName).value }}
                     </ng-template>
                   </p-cellEditor>
                 </td>
-                <td *ngSwitchDefault>{{ rowData.get(column).value }}</td>
+                <td *ngSwitchDefault>
+                  {{ rowData.get(header.controlName).value }}
+                </td>
                 <td>
                   <button
                     type="button"

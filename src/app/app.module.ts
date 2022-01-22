@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { CustomGridComponent } from './custom-grid/custom-grid.component';
+import { TooltipModule } from 'primeng/tooltip';
 @NgModule({
   declarations: [AppComponent, CustomGridComponent],
   imports: [
@@ -17,6 +18,7 @@ import { CustomGridComponent } from './custom-grid/custom-grid.component';
     ReactiveFormsModule,
     FormsModule,
     TableModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

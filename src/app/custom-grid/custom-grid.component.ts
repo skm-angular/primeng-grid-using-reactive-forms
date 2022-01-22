@@ -14,7 +14,7 @@ import {
 })
 export class CustomGridComponent implements OnInit {
   fg: FormGroup;
-  @Input() gridHeaders: any[] = [];
+  @Input() headers: any[] = [];
   @Input() data: any[] = [];
   constructor(private fb: FormBuilder) {
     this.fg = this.fb.group({});
