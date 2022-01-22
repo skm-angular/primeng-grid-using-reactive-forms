@@ -11,16 +11,23 @@
         <ng-container formArrayName="rows">
           <tr [formGroupName]="rowIndex">
             <ng-container *ngFor="let column of gridHeaders">
-              <td pEditableColumn>
-                <p-cellEditor>
-                  <ng-template pTemplate="input">
-                    <input pInputText type="text" [formControlName]="column" />
-                  </ng-template>
-                  <ng-template pTemplate="output">
-                    {{ rowData.get(column).value }}
-                  </ng-template>
-                </p-cellEditor>
-              </td>
+              <ng-container [ngSwitch]="column">
+                <td pEditableColumn *ngSwitchCase="'name'">
+                  <p-cellEditor>
+                    <ng-template pTemplate="input">
+                      <input
+                        pInputText
+                        type="text"
+                        [formControlName]="column"
+                      />
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                      {{ rowData.get(column).value }}
+                    </ng-template>
+                  </p-cellEditor>
+                </td>
+                <td *ngSwitchDefault>{{ rowData.get(column).value }}</td>
+              </ng-container>
             </ng-container>
           </tr>
         </ng-container>
