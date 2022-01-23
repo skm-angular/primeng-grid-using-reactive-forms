@@ -9,6 +9,7 @@ import { TableModule } from 'primeng/table';
 import { CustomGridComponent } from './custom-grid/custom-grid.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { ControlErrorsComponent } from './control-errors/control-errors.component';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [AppComponent, CustomGridComponent, ControlErrorsComponent],
   imports: [
@@ -20,6 +21,7 @@ import { ControlErrorsComponent } from './control-errors/control-errors.componen
     FormsModule,
     TableModule,
     TooltipModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

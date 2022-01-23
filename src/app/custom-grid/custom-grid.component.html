@@ -61,10 +61,26 @@
                     </ng-template>
                   </app-control-errors>
                 </td>
-                <td *ngSwitchDefault>
-                  {{ rowData.get(header.controlName).value }}
+                <td
+                  pEditableColumn
+                  *ngSwitchCase="'dropdown'"
+                  [pTooltip]="rowData.get(header.controlName).value"
+                  tooltipPosition="bottom"
+                >
+                  <p-cellEditor>
+                    <ng-template pTemplate="input">
+                      <p-dropdown
+                        [options]="header.options"
+                        [formControlName]="header.controlName"
+                        [style]="{ width: '100%' }"
+                      ></p-dropdown>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                      {{ rowData.get(header.controlName).value }}
+                    </ng-template>
+                  </p-cellEditor>
                 </td>
-                <td>
+                <td *ngSwitchCase="'actions'">
                   <button
                     type="button"
                     class="btn btn-default"
@@ -74,6 +90,9 @@
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                     Delete
                   </button>
+                </td>
+                <td *ngSwitchDefault>
+                  {{ rowData.get(header.controlName).value }}
                 </td>
               </ng-container>
             </ng-container>

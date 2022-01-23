@@ -21,6 +21,22 @@ export class AppComponent {
         pattern: 'User name contains invalid characters.',
       },
     },
+    {
+      controlName: 'status',
+      options: [
+        { label: 'In Stock', value: 'INSTOCK' },
+        { label: 'Low Stock', value: 'LOWSTOCK' },
+        { label: 'Out of Stock', value: 'OUTOFSTOCK' },
+      ],
+      pTooltip: 'Status',
+      tooltipPosition: 'bottom',
+      header: 'Status',
+      controlType: 'dropdown',
+      errorMessages: {
+        required: 'User name must be given.',
+        pattern: 'User name contains invalid characters.',
+      },
+    },
   ];
   title = 'primeng-grid-using-reactive-forms';
 
